@@ -4,7 +4,7 @@ const { multipleMongooseToObject } = require("../../util/mongoose");
 class homeController {
   index(req, res, next) {
     Singers.find({}).then((singer) => {
-      res.render("home", {
+      res.render("index", {
         singer: multipleMongooseToObject(singer),
       });
     });

@@ -134,13 +134,15 @@ body {
         display: flex;
         align-items: center;
         box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-        transition: all 0.2s linear;
         text-decoration: none;
+        border-radius: 16px;
         color: rgb(219, 219, 219);
         margin-bottom: 60px;
         // background-color: #fff;
+        transition: all 0.3s linear;
         &:hover {
             box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+           
         }
         .content-img {
             @include rong-dai(260px, 200px);
