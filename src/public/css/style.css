@@ -2,7 +2,8 @@
 body {
   font-family: 'Poppins', sans-serif;
   background: #181818;
-  color: #fff; }
+  color: #fff;
+  user-select: none; }
 
 .navbar {
   padding: 2rem 1rem 5rem 1rem; }
@@ -164,3 +165,30 @@ body {
       font-size: 1.4rem;
       color: #cccccc;
       cursor: pointer; }
+
+.detailLayer {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background-image: linear-gradient(to left bottom, #143743, #0e6469, #35947f, #7cc284, #d7ec85);
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0; }
+
+.detailContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .detailContainer .detailItem p {
+    margin: 24px 0; }
+
+.review {
+  padding: 0; }
+
+.swiper-horizontal > .swiper-pagination-bullets,
+.swiper-pagination-bullets.swiper-pagination-horizontal,
+.swiper-pagination-custom,
+.swiper-pagination-fraction {
+  bottom: -6px; }

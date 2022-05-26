@@ -38,6 +38,12 @@ scene.add(pointLight2);
 const pointLightHelper = new THREE.PointLightHelper(pointLight, 0.5);
 const pointLightHelper2 = new THREE.PointLightHelper(pointLight2, 0.5);
 
+// var ambientLight = new THREE.AmbientLight(0xffffff, 6);
+// scene.add(ambientLight);
+// var light1 = new THREE.PointLight(0xffffff, 10, 100);
+// light1.position.set(50, 50, 50);
+// scene.add(light1);
+
 // scene.add(pointLightHelper);
 // scene.add(pointLightHelper2);
 /**
@@ -47,20 +53,6 @@ const sizes = {
   width: window.innerWidth,
   height: window.innerHeight,
 };
-
-window.addEventListener("resize", () => {
-  // Update sizes
-  sizes.width = window.innerWidth;
-  sizes.height = window.innerHeight;
-
-  // Update camera
-  camera.aspect = sizes.width / sizes.height;
-  camera.updateProjectionMatrix();
-
-  // Update renderer
-  renderer.setSize(sizes.width, sizes.height);
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-});
 
 /**
  * Camera
@@ -85,6 +77,53 @@ const renderer = new THREE.WebGLRenderer({
 });
 renderer.setSize(sizes.width, sizes.height);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+window.addEventListener("resize", () => {
+  // Update sizes
+  sizes.width = window.innerWidth;
+  sizes.height = window.innerHeight;
+
+  // Update camera
+  camera.aspect = sizes.width / sizes.height;
+  camera.updateProjectionMatrix();
+
+  // Update renderer
+  renderer.setSize(sizes.width, sizes.height);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+});
+
+controls = new THREE.OrbitControls(camera, renderer.domElement);
+
+//skybox
+// var skyboxGeo = new THREE.BoxGeometry(10000, 10000, 10000);
+// var cubeMaterials = [
+//   new THREE.MeshBasicMaterial({
+//     map: new THREE.TextureLoader().load("../texture/moonnight/px.png"),
+//     side: THREE.BackSide,
+//   }),
+//   new THREE.MeshBasicMaterial({
+//     map: new THREE.TextureLoader().load("../texture/moonnight/nx.png"),
+//     side: THREE.BackSide,
+//   }),
+//   new THREE.MeshBasicMaterial({
+//     map: new THREE.TextureLoader().load("../texture/moonnight/py.png"),
+//     side: THREE.BackSide,
+//   }),
+//   new THREE.MeshBasicMaterial({
+//     map: new THREE.TextureLoader().load("../texture/moonnight/ny.png"),
+//     side: THREE.BackSide,
+//   }),
+//   new THREE.MeshBasicMaterial({
+//     map: new THREE.TextureLoader().load("../texture/moonnight/pz.png"),
+//     side: THREE.BackSide,
+//   }),
+//   new THREE.MeshBasicMaterial({
+//     map: new THREE.TextureLoader().load("../texture/moonnight/nz.png"),
+//     side: THREE.BackSide,
+//   }),
+// ];
+// var skybox = new THREE.Mesh(skyboxGeo, cubeMaterials);
+// scene.add(skybox);
 
 /**
  * Animate
