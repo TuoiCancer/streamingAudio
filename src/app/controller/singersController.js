@@ -8,22 +8,20 @@ class SingerController {
     console.log(req.body.slug);
     Song.find({ belongTo: req.params.slug })
       .then((item) => {
-        res.render("song", {
-          song: multipleMongooseToObject(item),
-        });
+        res.status(200).json(item);
       })
       .catch(next);
   }
   create(req, res, next) {
-    const item = new Singer(req.body);
-    item
+    const newSinger = new Singer(req.body);
+    newSinger
       .save()
-      .then((res) => res.json("luu thanh cong"))
+      .then((res) => res.status(200).json(newSinger))
       .catch((err) => res.json(err));
   }
   getAll(req, res, next) {
     Singer.find({}).then((item) => {
-      res.json(item);
+      res.status(200).json(item);
     });
   }
 }

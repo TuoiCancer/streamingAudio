@@ -4,24 +4,23 @@ const { multipleMongooseToObject } = require("../../util/mongoose");
 
 class SongsController {
   show(req, res, next) {
-    // Song.find({ belongTo: req.params.slug })
-    //   .then((songs) => {
-    //     res.render("song", {
-    //       songs: multipleMongooseToObject(songs),
-    //     });
-    //   })
-    //   .catch(next);
+    console.log(req.params.slug);
+    Song.find({ belongTo: req.params.slug })
+      .then((songs) => {
+        res.json(songs);
+      })
+      .catch(next);
   }
   create(req, res, next) {
     const item = new Song(req.body);
     item
       .save()
-      .then((res) => res.json("luu thanh cong"))
-      .catch((err) => res.json(err));
+      .then((res) => res.status(200).json("luu thanh cong"))
+      .catch((err) => res.status(500).json(err));
   }
   getAll(req, res, next) {
     Song.find({}).then((item) => {
-      res.json(item);
+      res.status(200).json(item);
     });
   }
 }

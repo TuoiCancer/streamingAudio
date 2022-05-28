@@ -1,13 +1,23 @@
+const dotenv = require("dotenv");
 const express = require("express");
 const { engine } = require("express-handlebars");
 const path = require("path");
-
+const mongoose = require("mongoose");
 const route = require("./routers");
 const app = express();
-const port = 3000;
-const db = require("./config/db");
-//connect to database
-db.connect();
+const port = process.env.PORT || 3000;
+
+dotenv.config();
+// Database
+const URL = process.env.MONGODB_URL;
+mongoose.connect(
+  URL,
+  { useNewUrlParser: true, useUnifiedTopology: true, autoIndex: false },
+  (err) => {
+    if (err) throw err;
+    console.log("Connect successfully!");
+  }
+);
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use((req, res, next) => {

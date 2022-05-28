@@ -5,19 +5,18 @@ class commentCtrl {
   //GET /getAll
   getAllComment(req, res, next) {
     Comment.find({}).then((item) => {
-      res.render("comment", {
-        comments: multipleMongooseToObject(item),
-      });
+      res.json(item);
     });
   }
 
   //POST /store
   createComment(req, res, next) {
+    console.log(req);
     const item = new Comment(req.body);
     item
       .save()
       .then(() => {
-        res.redirect("/comment");
+        res.json("thanh cong");
       })
       .catch((err) => res.json(err));
   }
