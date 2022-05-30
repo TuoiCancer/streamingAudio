@@ -1,6 +1,5 @@
 const dotenv = require("dotenv");
 const express = require("express");
-const { engine } = require("express-handlebars");
 const path = require("path");
 const mongoose = require("mongoose");
 const route = require("./routers");
@@ -33,15 +32,6 @@ app.use(
 );
 
 app.use(express.json());
-//Template engine
-app.engine(
-  "hbs",
-  engine({
-    extname: ".hbs",
-  })
-);
-app.set("view engine", "hbs");
-app.set("views", path.join(__dirname, "resources/views"));
 
 //Routes
 route(app);

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/index.js",
+    "start": "nodemon src/index.js",
     "watch": "node-sass --watch src/resources/scss/ --output src/public/css/"
   },
   "author": "xuan tuoi",
@@ -13,12 +13,9 @@
   "dependencies": {
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
-    "express-handlebars": "^6.0.5",
     "method-override": "^3.0.0",
     "mongoose": "^6.3.3",
     "mongoose-slug-generator": "^1.0.4",
-    "morgan": "^1.10.0",
-    "node-sass": "^7.0.1",
     "nodemon": "^2.0.16"
   }
 }
